@@ -3,6 +3,7 @@
  */
 function start() {
     console.log("Request handler 'start' was called.");
+    return "START";
 }
 
 function upload() {
@@ -10,4 +11,4 @@ function upload() {
 }
 
 exports.start = start;
-10 exports.upload = upload;
+exports.upload = upload;
