@@ -1,6 +1,8 @@
 var http = require("http");
 var url = require("url");
+//var formidable = require('formidable');
 
+/* Function to handle Text input into form
 function start(route, handle) {
     function onRequest(request, response) {
         //Place Holder for incoming data from POST operations
@@ -24,6 +26,18 @@ function start(route, handle) {
         request.addListener("end", function() {
             route(handle, pathname, response, postData);
         });
+    }
+    http.createServer(onRequest).listen(8888);
+    console.log("Server has started.");
+}
+*/
+
+// Function to handle upload of image file
+function start(route, handle) {
+    function onRequest(request, response) {
+        var pathname = url.parse(request.url).pathname;
+        console.log("Request for " + pathname + " received.");
+        route(handle, pathname, response, request);
     }
     http.createServer(onRequest).listen(8888);
     console.log("Server has started.");
