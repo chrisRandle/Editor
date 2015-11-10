@@ -30,7 +30,7 @@ function start(response, postData) {
 */
 
 //Return image upload homepage
-function start(response, postData) {
+function start(response) {
     console.log("Request handler 'start' was called.");
 
     var body = '<html>'+
@@ -64,18 +64,19 @@ function upload(response, request) {
     console.log("Request handler 'upload' was called.");
 
     var form = new formidable.IncomingForm();
+
     console.log("Start parse");
     form.parse(request, function(error, fields, files) {
         console.log("Parsing complete");
 
-        fs.rename(files.upload.path, "./images/joker.png", function(error) {
+        fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg", function(error) {
             if(error) {
-                fl.unlink("./images/joker.png");
-                fs.rename(files.upload.path, "./images/joker.png");
+                fs.unlink("/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
+                fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
             }
         });
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("received image: <br/>);
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write("received image:<br/>");
     response.write("<img src='/show' />");
     response.end();
     });
