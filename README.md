@@ -1,1 +1,2 @@
 # Editor
+Currently this is not a supported software package or even original software. I am using this space as a learning location. Soon it will become a webpage editing tool, but as I transition into node and javascript from other languages its just a placeholder.
