@@ -34,6 +34,7 @@ function start(route, handle) {
 
 // Function to handle upload of image file
 function start(route, handle) {
+
     function onRequest(request, response) {
         var pathname = url.parse(request.url).pathname;
         console.log("Request for " + pathname + " received.");
