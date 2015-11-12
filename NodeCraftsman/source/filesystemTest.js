@@ -55,14 +55,32 @@ stream.on('end', function() {
 
 var fs = require('fs');
 
+//This was a test to prove existence of the err event type.
+//var stream = fs.createReadStream('./dir/BIG.xml') //4HHB.xml');
+
+//Lets open up a file read stream to a big file
 var stream = fs.createReadStream('./dir/4HHB.xml');
 var content = '';
 
+//On event emitters there is usually an error event. This must be handled.
+stream.on('error', function(err) {
+    console.log('Sad panda: ' + err);
+});
+
+//One time Callback with unique behavior, can be handy
+stream.once('data', function(data) {
+    console.log('Begin Reading Data');
+    content += data;
+});
+
+//The fs package includes a 'data' event that pulls chunks of data from the createReadStream.
 stream.on('data', function(data) {
     content += data;
 });
 
+//Once the createReadStream is finished reading a file it sends the 'end' event.
 stream.on('end', function() {
     console.log("The Content: \n" + content);
 });
+
 //Still kind of dumb. As we read chunks to avoid excess memory usage but end up putting it all in memory anyway.
