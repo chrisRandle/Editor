@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Molecule of the Month list
+    ul
+        each article, i in motm_articles
+            li= article.id + ': ' + article.title + ': ' + article.teaser
+                li= article.first_image
