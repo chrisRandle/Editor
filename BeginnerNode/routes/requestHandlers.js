@@ -67,14 +67,14 @@ function upload(response, request) {
 
     console.log("Start parse");
     form.parse(request, function(error, fields, files) {
-        console.log("Parsing complete");
+        console.log("Parsing complete: ", files);
 
-        fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg", function(error) {
-            if(error) {
-                fs.unlink("/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
-                fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
-            }
-        });
+        //fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg", function(error) {
+        //    if(error) {
+        //        fs.unlink("/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
+        //        fs.rename(files.upload.path, "/Users/chrisrandle/sourcetree/Editor/images/joker.jpg");
+        //    }
+        //});
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("received image:<br/>");
     response.write("<img src='/show' />");
